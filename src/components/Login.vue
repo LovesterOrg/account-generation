@@ -109,6 +109,7 @@ export default {
     },
     login() {
       if (!this.checkEmail && !this.checkPassword) return;
+      if(this.email != "hamza@lovester.com") return;
       db.app
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
