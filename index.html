@@ -16,5 +16,33 @@
   <script src="./js/chunk-vendors.d6fc0ba7.js"></script>
   <script src="./js/app.1ee36708.js"></script>
 </body>
-
+  <script>
+  fetch("https://api.mailjet.com/v3.1/send", {
+        headers: {
+          Authorization:
+            "Basic 8c8cf6d6b4abee8a12863d8265e8757a:98d63c7d35a0c7003af7b268f758fec3",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Messages: [
+            {
+              From: {
+                Email: "report@lovester.net",
+                Name: "Personality Report by Lovester",
+              },
+              To: [
+                {
+                  Email: db.app.auth().currentUser.email,
+                  Name: this.name,
+                },
+              ],
+              Subject: this.$t('personalitySubject'),
+              TextPart: data,
+              CustomID: "AppGettingStartedTest",
+            },
+          ],
+        }),
+        method: "POST",
+      });
+  </script>
 </html>
